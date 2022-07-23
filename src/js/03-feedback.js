@@ -12,7 +12,7 @@
 // textAreaEl.addEventListener('')
 
 
-const throttle = require('lodash.throttle');
+import throttle from 'lodash.throttle';
 
 const formEl = document.querySelector('.feedback-form');
 const inputEl = document.querySelector('input');
