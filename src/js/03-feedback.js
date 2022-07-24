@@ -39,13 +39,20 @@ function onInputChange(event) {
 function onFormSubmit(event) {
 
     event.preventDefault();
-    formData.email = inputEl.value;
-    formData.message = messageEl.value;
 
-    console.log(formData);
+
+    if (formEl.email.value === '') {
+        return alert('Заповніть всі поля');
+    }
+    // formData.email = inputEl.value;
+    // formData.message = messageEl.value;
+    
+
+    // console.log(formData);
 
     event.currentTarget.reset();
     localStorage.removeItem(KEY);
+    console.log(formData); 
 }
 
 function fillForm() {
