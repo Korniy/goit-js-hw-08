@@ -12,12 +12,28 @@ formEl.addEventListener('submit', onFormSubmit);
 
 fillForm();
 
-const formData = {}; 
+let formData = {}; 
+
 
 function onInputChange(event) {
+    
+    // formData[event.target.name] = event.target.value;
+    // localStorage.setItem(KEY, JSON.stringify(formData));
+
+  if (localStorage.getItem(KEY)) {
+        formData = JSON.parse(localStorage.getItem(KEY));
+    } else {
+        formData = {};
+    }
 
     formData[event.target.name] = event.target.value;
     localStorage.setItem(KEY, JSON.stringify(formData));
+
+    // formData[event.target.name] = event.target.value;
+    // const asd = JSON.stringify(formData);
+    // localStorage.setItem(KEY, asd);
+
+
 };
 
 function onFormSubmit(event) {
@@ -37,12 +53,23 @@ function fillForm() {
     const rawValue = localStorage.getItem(KEY);
     const valueObject = JSON.parse(rawValue);
    
-if(valueObject) {
-    const saveEmail = valueObject.email;
-    inputEl.value = saveEmail;
+if(rawValue) {
+    // const saveEmail = valueObject.email;
+    // inputEl.value = saveEmail;
 
-    const saveMessage = valueObject.message;
-    messageEl.value = saveMessage;
+    // const saveMessage = valueObject.message;
+    // messageEl.value = saveMessage;
+
+//  valueObject = JSON.parse(valueObject);
+//     Object.entries(valueObject).forEach(([name, value]) => {
+//       formEl.elements[name].value = value;
+//     });
+
+  
+        formEl.email.value = valueObject.email || '';
+        formEl.message.value = valueObject.message || '';
+    
+ 
 };
 };
 
